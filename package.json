@@ -1,0 +1,45 @@
+{
+  "name": "sanctionskit-ai-sdk",
+  "version": "0.1.0-dev.0",
+  "private": true,
+  "type": "module",
+  "description": "Read approved retained SanctionsKit evidence with the Vercel AI SDK.",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "ai": "7.0.148",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "sanctionskit": "0.2.0",
+    "zod": "4.3.6"
+  },
+  "author": "SanctionsKit <support@sanctionskit.com>",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "ai": "^7.0.148"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "check": "npm run typecheck && npm test && npm run test:types",
+    "example:offline": "npm run build && node examples/offline.mjs",
+    "test:types": "tsc -p test/tsconfig.json"
+  }
+}
